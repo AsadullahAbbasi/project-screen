@@ -1,12 +1,17 @@
-import React from 'react'
-import Checkin from './Checkin'
+"use client";
+import React, { useState } from "react";
 
-const page = () => {
+import Hero from "./Hero";
+import Cards from "./Cards";
+import Navbar from "./Navbar";
+const Page = () => {
   return (
     <div>
-      <Checkin/>
+      <Navbar />
+      <Hero />
+      <Cards />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
