@@ -139,7 +139,7 @@ const Checkin = ({ setOpen, open }) => {
 
       {!added && Cancel && open ? (
         <div>
-          <div className="max-w-[572px] mt-4 px-4  rounded-xl  bg-white  flex flex-col justify-between py-4 gap-8">
+          <div className="w-[572px] mt-4 px-4  rounded-xl  bg-white  flex flex-col justify-between py-4 gap-8">
             <div>
               <form className="flex flex-col gap-8">
                 <div className="flex justify-between  bg-[#F8F8F8] px-4  rounded-t-lg h-12 items-center">
@@ -155,12 +155,12 @@ const Checkin = ({ setOpen, open }) => {
                   />
                 </div>
                 <div>
-                  <label className="flex flex-col gap-4 px-4">
+                  <label className="flex flex-col gap-4 justify-center px-4">
                     Title
                     <input
                       type="text"
                       placeholder="Enter title"
-                      className="rounded-lg pl-4 h-9 outline-none border-[1px]"
+                      className="rounded-lg pl-4 h-9 outline-none border-[1px] max-w-[300px]"
                       onChange={(e) => setTitle(e.target.value)}
                     />
                   </label>

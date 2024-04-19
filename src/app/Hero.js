@@ -7,8 +7,8 @@ function HeroSection() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <section>
-      <div className="absolute right-[40%] top-[25%]">
+    <section className="px-8">
+      <div className="absolute lg:right-[20%] lg:top-[25%] md:right-[12%] right-0 top-[25%] xl:right-[32%]">
         {isOpen ? <Checkin setOpen={setOpen} open={isOpen} /> : ""}
       </div>
 
