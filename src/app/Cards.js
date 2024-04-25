@@ -10,7 +10,7 @@ const Cards = () => {
         const key = localStorage.key(i);
         const item = localStorage.getItem(key);
         const items = JSON.parse(item);
-        console.log(item, "e");
+
         if (item.includes("title") && items.title !== "") {
           tempData.push(items);
         }
@@ -25,7 +25,7 @@ const Cards = () => {
         updateCardDataFromLocalStorage();
       }
       setstate(!state);
-      console.log("asd");
+  
     };
 
     window.addEventListener("storage", handleLocalStorageChange);
@@ -36,7 +36,7 @@ const Cards = () => {
   }, [state]);
 
   return (
-    <section className={"my-4 relative -z-10"}>
+    <section className="my-4 relative">
       <div
         className={
           "grid md:grid-cols-3 grid-cols-1 gap-4 place-items-center  -z-10 px-6 mx-auto max-w-[1348px]"

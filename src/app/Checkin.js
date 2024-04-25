@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-
+import { collection, addDoc,getFirestore } from "firebase/firestore";
+import app from "./firebaseConfig"; 
 const Checkin = ({ setOpen, open }) => {
+  const db = getFirestore(app);
   const [title, setTitle] = useState("");
   const [Cancel, setCancel] = useState(true);
   const [keys, setKeys] = useState([]);
@@ -22,7 +24,7 @@ const Checkin = ({ setOpen, open }) => {
     };
   };
 
-  const handleCreate = () => {
+  const handleCreate = async() => {
     const data = {
       title: title,
       browsedImg: browsedImg,
@@ -31,12 +33,17 @@ const Checkin = ({ setOpen, open }) => {
       NumberofGuests: NumberofGuests,
       BookedDate: BookedDate,
     };
-
+    try {
+      const docRef = await addDoc(collection(db, "users"), data);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
     localStorage.setItem(title, JSON.stringify(data));
 
     setKeys([...keys, title]);
     setOpen(false);
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
