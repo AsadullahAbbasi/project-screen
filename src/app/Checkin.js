@@ -8,7 +8,7 @@ const Checkin = ({ setOpen, open }) => {
   const db = getFirestore(app);
   const [title, setTitle] = useState("");
   const [Cancel, setCancel] = useState(true);
-
+  const [titles,setTitles] = useState([...titles,...title])
   const [browsedImg, setBrowseImg] = useState("");
   const [added, setAdded] = useState(false);
   const [Bookingid, setBookingid] = useState(0);
@@ -24,7 +24,7 @@ const Checkin = ({ setOpen, open }) => {
       setBrowseImg(reader.result);
     };
   };
-
+console.log(titles);
   const handleCreate = async() => {
     const data = {
       title: title,

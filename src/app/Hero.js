@@ -27,7 +27,7 @@ function HeroSection() {
           <Button
             onClick={() => setOpen(true)}
             variant="contained"
-            className="rounded-full py-1 h-10 mt-1 lg:mt-6"
+            className="rounded-full py-1 h-10 mt-1 lg:mt-6 "
           >
             Add check in
           </Button>

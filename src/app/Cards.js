@@ -22,7 +22,7 @@ const Cards = () => {
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         setCardData("")
         querySnapshot.forEach((doc) => {
-          console.log(doc,"d");
+          // console.log(doc,"d");
           setCardData((prevData) => [...prevData, doc.data()]);
         });
       });
@@ -33,7 +33,7 @@ const Cards = () => {
 
     Data(); 
   }, []);
-  console.log(cardData);
+  // console.log(cardData);
   return (
     <section className="my-4   -z-10">
       <div
@@ -44,7 +44,7 @@ const Cards = () => {
         {cardData.map((item,index) => (
           <div
          key={index}
-            className="border border-gray-300 p-4 rounded-md max-w-sm shadow-md"
+            className="border border-gray-300 p-4 rounded-md max-w-sm shadow-md w-[90%]"
           >
             <div className="relative">
               <img
