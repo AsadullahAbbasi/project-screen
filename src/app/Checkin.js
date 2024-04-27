@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { collection, addDoc,getFirestore } from "firebase/firestore";
 import app from "./firebaseConfig"; 
+import "./globals.css"
 const Checkin = ({ setOpen, open }) => {
   const db = getFirestore(app);
   const [title, setTitle] = useState("");
@@ -48,7 +49,7 @@ const Checkin = ({ setOpen, open }) => {
   return (
     <section className="flex bg-gray-600">
     {added && Cancel ? (
-      <div className="max-w-[672px] mt-4 px-4  rounded-xl bg-white  flex  flex-col gap-16 justify-between py-4 ">
+      <div className="checkinWidth  max-w-[250px]  md:w-[300px] lg:max-w-[400px] md:max-w-[300px]] mt-4 px-4  rounded-xl  flex flex-col justify-between py-4 gap-8">
         <div className="flex justify-between  bg-[#F8F8F8] px-4  rounded-t-lg h-12 items-center">
           <p>Detail</p>
 
@@ -62,33 +63,33 @@ const Checkin = ({ setOpen, open }) => {
             }}
           />
         </div>
-        <div className="flex justify-between gap-16">
-          <div className="flex flex-col gap-6">
-            <label className="flex  justify-between ">
-              <p>Booking id</p>
+        <div className="flex flex-col justify-between gap-16 w-full">
+          <div className="flex flex-col gap-6 w-full">
+            <label className="flex  justify-between w-full gap-2 h-6">
+              <p className="text-sm">Booking id</p>
               <input
-                className="outline-none border-[1.5px]"
+                className="outline-none border-[1.5px] w-full "
                 type="number"
                 onChange={(e) => setBookingid(e.target.value)}
                 name=""
                 id=""
               />
             </label>
-            <label className="flex  justify-between gap-4">
+            <label className="flex  justify-between gap-4 w-full">
               <p>Rooms</p>
               <input
                 type="number"
-                className="outline-none border-[1.5px]"
+                className="outline-none border-[1.5px] w-full"
                 onChange={(e) => setRooms(e.target.value)}
                 name=""
                 id=""
               />
             </label>
-            <label className="flex  justify-between ">
-              <p className="pr-4">Number of Guests</p>
+            <label className="flex  justify-between w-full h-10">
+              <p className="pr-4 text-sm">Number of Guests</p>
               <input
                 type="number"
-                className="outline-none border-[1.5px]"
+                className="outline-none border-[1.5px] w-full"
                 onChange={(e) => setNumberofGuests(e.target.value)}
                 name=""
                 id=""
@@ -107,7 +108,7 @@ const Checkin = ({ setOpen, open }) => {
           </div>
 
           <div>
-            <div className="max-w-[200px]">
+            <div className="w-full">
               <img
                 src={browsedImg}
                 alt="ADD IMG"
@@ -123,7 +124,7 @@ const Checkin = ({ setOpen, open }) => {
               setCancel(false);
               setOpen(false);
             }}
-            className="rounded-2xl border-[1px] px-5 h-9 text-sm"
+            className="rounded-2xl border-[1px] px-2 sm:px-5 h-9 text-sm"
           >
             Cancel
           </button>
@@ -133,7 +134,7 @@ const Checkin = ({ setOpen, open }) => {
 
               handleCreate();
             }}
-            className="rounded-2xl border-[1px] px-5 h-9 py-1 bg-[#7B5AFF]"
+            className="rounded-2xl border-[1px] px-2 sm:px-5 h-9 py-1 bg-[#7B5AFF]"
           >
             create
           </button>

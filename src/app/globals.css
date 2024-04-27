@@ -3,3 +3,8 @@
 @tailwind utilities;
 
 
+.checkinWidth {
+ @media screen and (max-width : 375px ) {
+    max-width: 220px;
+ }
+}
