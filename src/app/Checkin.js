@@ -24,7 +24,7 @@ const Checkin = ({ setOpen, open }) => {
       setBrowseImg(reader.result);
     };
   };
-console.log(titles);
+// console.log(titles);
   const handleCreate = async() => {
     const data = {
       title: title,
