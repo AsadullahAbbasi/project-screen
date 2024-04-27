@@ -146,7 +146,7 @@ const Checkin = ({ setOpen, open }) => {
 
     {!added && Cancel && open ? (
       <div>
-        <div className="max-w-[220px] lg:max-w-[350px] md:max-w-[300px]] mt-4 px-4  rounded-xl  flex flex-col justify-between py-4 gap-8">
+        <div className="max-w-[240px] lg:max-w-[350px] md:max-w-[300px]] mt-4 px-4  rounded-xl  flex flex-col justify-between py-4 gap-8">
           <div>
             <form className="flex flex-col gap-8">
               <div className="flex justify-between  bg-[#F8F8F8] px-4  rounded-t-lg h-12 items-center">

@@ -8,7 +8,7 @@ function HeroSection() {
 
   return (
     <section className="px-8 relative h-full w-full ">
-      <div className="z-10 absolute lg:right-[30%] lg:top-[15%] md:right-[25%]  md:top-[10%] right-[15%] top-[25%] xl:right-[42%] xl:top-[140%]">
+      <div className="z-10 absolute lg:right-[30%] lg:top-[15%] md:right-[25%]  md:top-[10%] right-[13%] top-[25%] xl:right-[42%] xl:top-[140%]">
         {isOpen ? <Checkin setOpen={setOpen} open={isOpen} /> : ""}
       </div>
 
