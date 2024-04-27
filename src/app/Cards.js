@@ -20,7 +20,7 @@ const Cards = () => {
       // });
       const q = query(collection(db, "data"));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        setCardData("")
+        setCardData([])
         querySnapshot.forEach((doc) => {
           // console.log(doc,"d");
           setCardData((prevData) => [...prevData, doc.data()]);
