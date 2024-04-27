@@ -7,20 +7,20 @@ function HeroSection() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <section className="px-8 ">
-      <div className="absolute lg:right-[20%] lg:top-[25%] md:right-[12%] right-0 top-[25%] xl:right-[32%]">
+    <section className="px-8 relative h-full w-full ">
+      <div className="z-10 absolute lg:right-[30%] lg:top-[15%] md:right-[25%]  md:top-[10%] right-[15%] top-[25%] xl:right-[42%] xl:top-[140%]">
         {isOpen ? <Checkin setOpen={setOpen} open={isOpen} /> : ""}
       </div>
 
-      <div className="h-[180px] relative max-w-[1255px] mx-auto -z-10">
+      <div className="h-[180px] relative max-w-[1255px] mx-auto">
         <img
           src="https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1652341068/EducationHub/photos/ocean-waves.jpg"
           alt="ss"
-          className="w-full absolute top-0 left-0 h-full object-cover -z-10 rounded-lg"
+          className="w-full absolute top-0 left-0 h-full object-cover  rounded-lg"
         />
-        <div className="lg:ml-6 ml-2 p-4 ">
+        <div className="lg:ml-6 ml-2 p-4">
           <h1 className=" text-3xl text-white font-bold  ">Hi 👋 James Doe</h1>
-          <p className="text-white font-bold ">
+          <p className="text-white font-bold object-fill">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi,
             quod?
           </p>

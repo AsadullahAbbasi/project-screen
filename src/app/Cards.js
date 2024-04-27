@@ -1,50 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,  } from "react";
+import {
 
+  collection,
+
+  getFirestore,
+  query, onSnapshot
+} from "firebase/firestore";
+import app from "./firebaseConfig";
 const Cards = () => {
+  const db = getFirestore(app);
   const [cardData, setCardData] = useState([]);
-  const [state, setstate] = useState();
-  useEffect(() => {
-    const updateCardDataFromLocalStorage = () => {
-      const tempData = [];
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const item = localStorage.getItem(key);
-        const items = JSON.parse(item);
-
-        if (item.includes("title") && items.title !== "") {
-          tempData.push(items);
-        }
-      }
-      setCardData(tempData);
-    };
-
-    updateCardDataFromLocalStorage();
-
-    const handleLocalStorageChange = (event) => {
-      if (event.key === "yourLocalStorageKeyForItems") {
-        updateCardDataFromLocalStorage();
-      }
-      setstate(!state);
   
+  useEffect(() => {
+    const Data = async () => {
+      // const querySnapshot = await getDocs(collection(db, "users"));
+      // querySnapshot.forEach((doc) => {
+      //   console.log(doc.data(), doc.id);
+      //   setCardData((prevData) => [...prevData, doc.data()]);
+      // });
+      const q = query(collection(db, "data"));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        setCardData("")
+        querySnapshot.forEach((doc) => {
+          console.log(doc,"d");
+          setCardData((prevData) => [...prevData, doc.data()]);
+        });
+      });
+      return () => {
+        unsubscribe();
+      };
     };
 
-    window.addEventListener("storage", handleLocalStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleLocalStorageChange);
-    };
-  }, [state]);
-
+    Data(); 
+  }, []);
+  console.log(cardData);
   return (
-    <section className="my-4 relative">
+    <section className="my-4   -z-10">
       <div
         className={
-          "grid md:grid-cols-3 grid-cols-1 gap-4 place-items-center  -z-10 px-6 mx-auto max-w-[1348px]"
+          "grid md:grid-cols-3 grid-cols-1 gap-4 place-items-center   px-6 mx-auto max-w-[1348px]"
         }
       >
-        {cardData.map((item, keys) => (
+        {cardData.map((item,index) => (
           <div
-            key={keys}
+         key={index}
             className="border border-gray-300 p-4 rounded-md max-w-sm shadow-md"
           >
             <div className="relative">
