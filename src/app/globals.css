@@ -8,3 +8,8 @@
     max-width: 240px;
  }
 }
+.rightMob {
+   @media screen and (max-width : 320px ) {
+      right: 13% ;
+   }
+  }

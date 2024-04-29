@@ -5,10 +5,10 @@ import Checkin from "./Checkin";
 
 function HeroSection() {
   const [isOpen, setOpen] = useState(false);
-
+  isOpen ? document.body.style.backgroundColor="#BDBDBD" : document.body.style.backgroundColor="white"
   return (
     <section className="px-8 relative h-full w-full ">
-      <div className="z-10 absolute lg:right-[30%] lg:top-[15%] md:right-[25%]  md:top-[10%] right-[13%] top-[25%] xl:right-[42%] xl:top-[140%]">
+      <div className=" rightMob z-10 absolute lg:right-[30%] lg:top-[15%] md:right-[30%]  md:top-[10%] right-[18%] top-[-12%] xl:right-[38%] xl:top-[12%]">
         {isOpen ? <Checkin setOpen={setOpen} open={isOpen} /> : ""}
       </div>
 
@@ -18,7 +18,7 @@ function HeroSection() {
           alt="ss"
           className="w-full absolute top-0 left-0 h-full object-cover  rounded-lg"
         />
-        <div className="lg:ml-6 ml-2 p-4">
+        <div className="lg:ml-6 ml-2 sm:p-4">
           <h1 className=" text-3xl text-white font-bold  ">Hi 👋 James Doe</h1>
           <p className="text-white font-bold object-fill">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi,

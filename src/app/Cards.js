@@ -4,13 +4,17 @@ import {
   getFirestore,
   query,
   onSnapshot,
+  orderBy,
+  limit,
+  doc,
+  deleteDoc
 } from "firebase/firestore";
 import app from "./firebaseConfig";
 const Cards = () => {
   const db = getFirestore(app);
   const [cardData, setCardData] = useState([]);
   const [isLoaded, settLoaded] = useState(false);
-
+// console.log("asad");
   useEffect(() => {
     const Data = async () => {
       // const querySnapshot = await getDocs(collection(db, "users"));
@@ -18,12 +22,13 @@ const Cards = () => {
       //   console.log(doc.data(), doc.id);
       //   setCardData((prevData) => [...prevData, doc.data()]);
       // });
-      const q = query(collection(db, "data"));
+      const q = query(collection(db, "data"), orderBy("createdAt","desc"),limit(3 ));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         setCardData([]);
-        querySnapshot.forEach((doc) => {
-          // console.log(doc,"d");
-          setCardData((prevData) => [...prevData, doc.data()]);
+       
+        querySnapshot.forEach((doc,index) => {
+       
+          setCardData((prevData) => [...prevData, {...doc.data(),id : doc.id}]);
         });
         settLoaded(true);
       });
@@ -34,7 +39,9 @@ const Cards = () => {
 
     Data();
   }, []);
-
+  const handleDelete = (id)=>{
+    deleteDoc(doc(db, "data", id));
+  }
   // console.log(cardData);
   return (
     <section className="my-4   -z-10">
@@ -84,7 +91,7 @@ const Cards = () => {
                 </p>
               </div>
             </div>
-            <div className="mt-4 ">
+            <div className="mt-4 flex flex-col gap-4">
               <div className=" flex justify-between">
                 <div>
                   <h2 className="text-xl font-semibold">{item.title}</h2>
@@ -96,6 +103,12 @@ const Cards = () => {
                 <p> Rooms : {item.Rooms}</p>
                 <p> NumberofGuests : {item.NumberofGuests}</p>
                 <p> Bookingid : {item.Bookingid}</p>
+                 {/* <p>Created at {item?.createdAt}</p> */}
+                 {/* {console.log(item?.createdAt)} */}
+              
+              </div>
+              <div>
+                <button className="rounded-lg border-2 px-4 py-1 bg-[#7B5AFF]" onClick={()=>handleDelete(item.id)} > Delete</button>
               </div>
             </div>
           </div>
