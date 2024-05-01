@@ -5,7 +5,7 @@ import Checkin from "./Checkin";
 
 function HeroSection() {
   const [isOpen, setOpen] = useState(false);
-  isOpen ? document.body.style.backgroundColor="#BDBDBD" : document.body.style.backgroundColor="white"
+  // isOpen ? document.body.style.backgroundColor="#BDBDBD" : document.body.style.backgroundColor="white"
   return (
     <section className="px-8 relative h-full w-full ">
       <div className=" rightMob z-10 absolute lg:right-[30%] lg:top-[15%] md:right-[30%]  md:top-[10%] right-[18%] top-[-12%] xl:right-[38%] xl:top-[12%]">
