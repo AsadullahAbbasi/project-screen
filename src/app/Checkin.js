@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   collection,
@@ -11,7 +11,7 @@ import app from "./firebaseConfig";
 import "./globals.css";
 const Checkin = ({ setOpen, open }) => {
   const db = getFirestore(app);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("abc");
   const [Cancel, setCancel] = useState(true);
   // const [titles,setTitles] = useState([...titles,...title])
   const [browsedImg, setBrowseImg] = useState("");
