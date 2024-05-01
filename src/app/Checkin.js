@@ -13,7 +13,7 @@ const Checkin = ({ setOpen, open }) => {
   const db = getFirestore(app);
   const [title, setTitle] = useState("abc");
   const [Cancel, setCancel] = useState(true);
-  // const [titles,setTitles] = useState([...titles,...title])
+
   const [browsedImg, setBrowseImg] = useState("");
   const [added, setAdded] = useState(false);
   const [Bookingid, setBookingid] = useState(0);

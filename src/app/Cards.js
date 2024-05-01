@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import {
@@ -21,33 +21,29 @@ const Cards = () => {
   const [title, setTitle] = useState("");
   const [BookedDate, setBookedDate] = useState("");
 
- 
   const db = getFirestore(app);
   const [cardData, setCardData] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [editState, setEditState] = useState({}); // State to manage edit mode for each input
+  const [editState, setEditState] = useState({});
   const inputRefs = useRef({});
 
-  useEffect( () => {
-    const fetchData =  async() => {
+  useEffect(() => {
+    const fetchData = async () => {
       const q = query(
-        collection(db, "data"),
-        orderBy("createdAt", "desc"),
+        collection(db, "data")
+        // orderBy("createdAt", "desc")
         // limit(3)
       );
-      const unsubscribe =  onSnapshot(q, (querySnapshot) => {
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
         let data = [];
-      querySnapshot.forEach((doc) => {
+        querySnapshot.forEach((doc) => {
           data.push({ ...doc.data(), id: doc.id });
-          console.log(data,"inloop");
         });
-       
-      
+
         setCardData(data);
 
-    
-        console.log(cardData);
         setIsLoaded(true);
+        console.log(data, "daa", cardData, "card ");
       });
       return () => {
         unsubscribe();
@@ -55,22 +51,20 @@ const Cards = () => {
     };
 
     fetchData();
-  },[]);
+  }, []);
 
-console.log("asad",cardData);
+  useEffect(() => {
+    console.log("cardData updated:", cardData);
+  }, [cardData]);
 
-
+  console.log(cardData, "d");
   const handleDelete = (id) => {
     deleteDoc(doc(db, "data", id));
   };
 
-
   const handleEdit = (fieldName, id) => {
-
-
     inputRefs.current[id + fieldName].focus();
     setEditState((prev) => ({ ...prev, [id + fieldName]: true }));
- 
   };
   const handleSave = (fieldName, id) => {
     setEditState((prev) => ({ ...prev, [id + fieldName]: false }));
@@ -83,12 +77,11 @@ console.log("asad",cardData);
       NumberofGuests: NumberofGuests,
       Rooms: Rooms,
     });
-    // setTitle("")
   };
-  // console.log(inputRefs);
+
   return (
     <section className="my-4 -z-10">
-      {/* {isLoaded ? null : (
+      {isLoaded ? null : (
         <div role="status" className="translate-x-[50%] translate-y-[150%]">
           <svg
             aria-hidden="true"
@@ -108,7 +101,7 @@ console.log("asad",cardData);
           </svg>
           <span className="sr-only">Loading...</span>
         </div>
-      )} */}
+      )}
 
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4 place-items-center px-6 mx-auto max-w-[1348px]">
         {cardData.map((item, index) => (
@@ -296,7 +289,6 @@ console.log("asad",cardData);
           </div>
         ))}
       </div>
-      {/* <p ref={(Ref)=>console.log(Ref)} ></p> */}
     </section>
   );
 };
