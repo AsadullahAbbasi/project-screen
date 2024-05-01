@@ -10,7 +10,7 @@ import {
 import app from "./firebaseConfig";
 import "./globals.css";
 const Checkin = ({ setOpen, open }) => {
-  
+  const db = getFirestore(app);
   const [title, setTitle] = useState("abc");
   const [Cancel, setCancel] = useState(true);
   // const [titles,setTitles] = useState([...titles,...title])
